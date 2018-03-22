@@ -4,18 +4,21 @@ from .planar import charactersPlanar
 from .stereo import charactersStereo
 from .calen import charactersCalen
 def Alphabet(str, mode="planar"):
-	if mode == "planar":
-		height = 7
-		characters = charactersPlanar
-	elif mode == "stereo":
-		height = 7
-		characters = charactersStereo
-	elif mode == "calen":
-		height = 3
-		characters = charactersCalen
-	else:
-		print("wrong parameter, please input \"--planar\" or \"--stereo\"!")
-	result = []
+	while 1:
+		if mode == "planar":
+			height = 7
+			characters = charactersPlanar
+			break
+		elif mode == "stereo":
+			height = 7
+			characters = charactersStereo
+			break
+		elif mode == "calen":
+			height = 3
+			characters = charactersCalen
+			break
+		else:
+			mode = input("wrong parameter, please input \"--planar\" or \"--stereo\"!")
 	for i in range(0, height):
 		tmp = ""
 		for k in range(0, len(str)):
@@ -35,7 +38,7 @@ def start():
 			Alphabet(args.string, "planar")
 			sys.exit()
 	string = input("input the string you want to change:")
-	mode = input("input the mode you want to use:(\"planar\" or \"stereo\")")
+	mode = input("input the mode you want to use:(\"planar\" or \"stereo\")") or "planar"
 	Alphabet(string, mode)
 
 def getAlphabet(str, mode="planar"):
